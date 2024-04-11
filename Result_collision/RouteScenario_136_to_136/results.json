@@ -1,0 +1,51 @@
+{
+    "meta_data": {
+        "name": "RouteScenario_136",
+        "index": 0,
+        "town": "Town03",
+        "Num_agents": 4
+    },
+    "is_terminated": true,
+    "tot": 74,
+    "adv_collision": false,
+    "adv_rel_pos_at_collision": [
+        0.1394626498222351,
+        -0.9902273416519165
+    ],
+    "adv_rel_yaw_at_collision": 4.870318412780762,
+    "Loss": 26.931291580200195,
+    "ego_col": 24.88905906677246,
+    "adv_rd": 0.25475168228149414,
+    "adv_col": 1.017600417137146,
+    "Collision Metric": 1.0,
+    "Time of Termination": 74.0,
+    "Cumulative OOB": 0.0,
+    "Time spent OOB": 0.0,
+    "iteration": 0,
+    "first_metrics": {
+        "Loss": 26.931291580200195,
+        "ego_col": 24.88905906677246,
+        "adv_rd": 0.25475168228149414,
+        "adv_col": 1.017600417137146,
+        "Collision Metric": 1.0,
+        "Time of Termination": 74.0,
+        "Cumulative OOB": 0.0,
+        "Time spent OOB": 0.0,
+        "adv_collision": false,
+        "iteration": 0
+    },
+    "all_iterations": {
+        "0": {
+            "Loss": 26.931291580200195,
+            "ego_col": 24.88905906677246,
+            "adv_rd": 0.25475168228149414,
+            "adv_col": 1.017600417137146,
+            "Collision Metric": 1.0,
+            "Time of Termination": 74.0,
+            "Cumulative OOB": 0.0,
+            "Time spent OOB": 0.0,
+            "adv_collision": false,
+            "iteration": 0
+        }
+    }
+}
