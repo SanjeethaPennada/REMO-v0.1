@@ -3,7 +3,7 @@ HARDWARE
     Memory: 16GB+
     Storage: 150GB+
 
-SOFTWRAE
+SOFTWARE
     Ubuntu 20.04
     nvidia driver
     CARLA 0.9.15
