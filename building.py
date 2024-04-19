@@ -13,4 +13,4 @@ world = client.load_world('Town03_Opt', carla.MapLayer.Buildings | carla.MapLaye
 world.unload_map_layer(carla.MapLayer.Buildings)
 
     # Toggle all buildings on   
-world.load_map_layer(carla.MapLayer.Buildings)
+#world.load_map_layer(carla.MapLayer.Buildings)

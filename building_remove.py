@@ -28,13 +28,19 @@ client.set_timeout(2.0)
 world = client.load_world('Town03')
 
 # Define your location (replace these coordinates with your actual location)
-location = carla.Location(x=-80.0, y=100.0, z=100.0)  # Example location -80.0, y=100.0, z=120
+#location = carla.Location(x=-150.0, y=30.0, z=50.0)  # Left building 
+#location = carla.Location(x=-150.0, y=70.0, z=50.0)  # right building
+#location = carla.Location(x=-80.0, y=100.0, z=100.0)  # left above building
+location = carla.Location(x=-80.0, y=180.0, z=120.0)  # right above building
 
 # Move the spectator to the specified location
 set_spectator_location(world, location)
 
 # Define the radius within which to search for buildings
-radius = 150.0  # Adjust the radius as needed 
+#radius = 100.0  # Left building 
+#radius = 100.0  # right building
+#radius = 150.0  # left above building
+radius = 200.0  # right above building
 
 # Get building IDs at the specified location within the radius
 building_ids = get_building_ids_at_location(world, location, radius)
@@ -44,17 +50,14 @@ env_objs = world.get_environment_objects(carla.CityObjectLabel.Buildings)
 building_objects = [obj for obj in env_objs if obj.id in building_ids]
 
 # Collect the IDs of the first 10 buildings
-first_10_building_ids = [building.id for building in building_objects[:10]] 
+#first_n_building_ids = [building.id for building in building_objects[:60]] #Left building 
+#first_n_building_ids = [building.id for building in building_objects[:100]]  # right building
+#first_n_building_ids = [building.id for building in building_objects[:10]]  # left above building
+first_n_building_ids = [building.id for building in building_objects[:45]] # right above building
+
+
 # Toggle off the first 10 buildings
-world.enable_environment_objects(set(first_10_building_ids), False)
+world.enable_environment_objects(set(first_n_building_ids), False)
 
 
-
-
-
-#left building (x=-150.0, y=30.0, z=50.0)  , radius = 100, ID [:60] 
-#greenery
-#right building x=-150.0, y=70.0, z=50.0 , radius = 100, ID [:100]
-#top right x=-80.0, y=180.0, z=120.0 , radius = 200, ID [:45]
-#top left x=-80.0, y=100.0, z=100.0 , radius = 150, ID [:10]
 

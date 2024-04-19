@@ -37,33 +37,33 @@ def weather_mrng_script():
     # Run weather_mrng.py
     subprocess.Popen(["python3", "weather_mrng.py"])
 
-#def weather_afn_script():
+def weather_afn_script():
     # Run weather_afn.py
-    #subprocess.Popen(["python3", "weather_afn.py"])
+    subprocess.Popen(["python3", "weather_afn.py"])
    
-#def weather_rain_script():
+def weather_rain_script():
     # Run weather_rain.py
-    #subprocess.Popen(["python3", "weather_rain.py"])
+    subprocess.Popen(["python3", "weather_rain.py"])
     
-#def dynamic_weather_script():
+def dynamic_weather_script():
     # Run dynamic_weather.py
-    #subprocess.Popen(["python3", "dynamic_weather.py"])
+    subprocess.Popen(["python3", "dynamic_weather.py"])
 
-#def building_script():
+def building_script():
     # Run building.py
-    #subprocess.Popen(["python3", "building.py"])
+    subprocess.Popen(["python3", "building.py"])
         
-#def building_remove_script():
+def building_remove_script():
     # Run building_remove.py
-    #subprocess.Popen(["python3", "building_remove.py"])
+    subprocess.Popen(["python3", "building_remove.py"])
     
-#def trafficlight_remove_script():
+def trafficlight_remove_script():
     # Run trafficlight_remove.py
-    #subprocess.Popen(["python3", "trafficlight_remove.py"])
+    subprocess.Popen(["python3", "trafficlight_remove.py"])
     
-#def trafficlight_change_script():
+def trafficlight_change_script():
     # Run trafficlight_change.py
-    #subprocess.Popen(["python3", "trafficlight_change.py"])
+    subprocess.Popen(["python3", "trafficlight_change.py"])
 
 
 
@@ -500,7 +500,7 @@ class GenerationEngine:
 def main(args):
     
 	engine = GenerationEngine(args)
-	weather_mrng_script()
+	#weather_mrng_script()
 	#weather_afn_script()  
 	#weather_rain_script() 
 	#dynamic_weather_script() 
