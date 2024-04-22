@@ -15,7 +15,7 @@
 ## Setup
 Clone the repo
 ```Shell
-git clone https://github.com/ADS-Testing/king.git
+git clone https://github.com/SanjeethaPennada/King-Replay.git
 cd king
 ```
 
@@ -72,7 +72,7 @@ nohup carla_server/CarlaUE4.sh --world-port=2000 -RenderOffScreen &
 Following script will run generation and automatically evaluate the results.
 
 ##### TransFuser generation
-For Transfuser generation using both gradient paths, open generate_scenarios.py, change number of agents to 1 or 2 or 4 based on your choice (default = 4 agents) and run:
+For Transfuser generation using both gradient paths, open run_generation_transfuser.sh, change number of agents to 1 or 2 or 4 based on your choice (default = 4 agents) and run:
 ```Shell
 bash run_generation_transfuser.sh
 ```
@@ -120,17 +120,18 @@ Open run_generation_transfuser.sh file, and use below arguments to replay scenar
 To replay a scenario with modifications, open run_generation_transfuser.sh file, and type below arguments to tailor the environment.
 
  
-a) --building     - to remove all buildings in the Town
-b) --building_remove    - to remove specific buildings in the selected scenario. You can also particularly specify which building to be removed by making changes to the building_remove.py file.
-c) --trafficlight_remove  - to remove traffic lights in the selected scenario
-d) --trafficlight_change  - to change the state of the traffic lights in the selected scenario
-e) --weather_afn          - to change weather conditions to afternoon 
-f) --weather_mrng         - to change weather to morning 
-g) --weather_rain         - to change weather to raining condition
-h) --CloudyDawn / --CloudyMorning/ --CloudyNight /--CloudyNoon / --CloudySunset / --Cloudytwilight - Set cloudy weather conditions.
-i) --HardRainDawn / --HardRainMorning/ --HardRainNight/ --HardRainNoon/ --HardRainSunset/ --HardRainTwilight - Set hard rain weather conditions.
-j) --MidRainDawn/ --MidRainMorning / --MidRainNight / --MidRainNoon /  --MidRainSunset  / --MidRainTwilight - Set medium rain conditions.
-k) --SoftRainDawn/ --SoftRainMorning / --SoftRainNight / --SoftRainNoon / --SoftRainSunset/ --SoftRainTwilight - Set soft rain weather conditions.
-l) --WetCloudyDawn/ --WetCloudyMorning / --WetCloudyNight/ --WetCloudyNoon/ --WetCloudySunset/ --WetCloudyTwilight  - Set wet cloudy weather conditions.
+a) --building     - to remove all buildings in the Town. <br />
+b) --building_remove    - to remove specific buildings in the selected scenario. You can also particularly specify which building to be removed by making changes to the building_remove.py file.  <br />
+c) --trafficlight_remove  - to remove traffic lights in the selected scenario.  <br />
+d) --trafficlight_change  - to change the state of the traffic lights in the selected scenario.  <br />
+e) --weather_afn          - to change weather conditions to afternoon.  <br />
+f) --weather_mrng         - to change weather to morning.  <br /> 
+g) --weather_rain         - to change weather to raining condition.  <br />
+h) --CloudyDawn / --CloudyMorning/ --CloudyNight /--CloudyNoon / --CloudySunset / --Cloudytwilight - Set cloudy weather conditions.  <br />
+i) --HardRainDawn / --HardRainMorning/ --HardRainNight/ --HardRainNoon/ --HardRainSunset/ --HardRainTwilight - Set hard rain weather conditions.  <br />
+j) --MidRainDawn/ --MidRainMorning / --MidRainNight / --MidRainNoon /  --MidRainSunset  / --MidRainTwilight - Set medium rain conditions.  <br />
+k) --SoftRainDawn/ --SoftRainMorning / --SoftRainNight / --SoftRainNoon / --SoftRainSunset/ --SoftRainTwilight - Set soft rain weather conditions.  <br />
+l) --WetCloudyDawn/ --WetCloudyMorning / --WetCloudyNight/ --WetCloudyNoon/ --WetCloudySunset/ --WetCloudyTwilight  - Set wet cloudy weather conditions.  <br />
 m) --WetDawn/ --WetMorning / --WetNight / --WetNoon / --WetSunset / --WetTwilight  - Set wet weather conditions.
+
 

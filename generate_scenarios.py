@@ -749,9 +749,6 @@ def main(args):
         WetSunset_script()
     if args.wet_twilight:
         WetTwilight_script()
-
-    
-    if 
     engine.run()
 
 
@@ -955,7 +952,7 @@ if __name__ == '__main__':
     main_parser.add_argument("--wet_night", action='store_true', help="Run WetNight_script()")
     main_parser.add_argument("--wet_noon", action='store_true', help="Run WetNoon_script()")
     main_parser.add_argument("--wet_sunset", action='store_true', help="Run WetSunset_script()")
-    main_parser.add_argument("--wet_twilight", action='store_true', help="Run WetTwi
+    main_parser.add_argument("--wet_twilight", action='store_true', help="Run WetTwilight_script()")
     
 
     args = main_parser.parse_args()
