@@ -91,7 +91,7 @@ generation_results_transfuser/
 ```
 ### Collision detection
 
-Collisions are also detected in the scenario using Collision rate
+Collisions are detected in the scenario using Collision rate as shown below:
 
 ![alt text](https://github.com/SanjeethaPennada/King-Replay/blob/main/Images/collision_detection.png)
 
@@ -181,6 +181,7 @@ Then run:
 ```Shell
 bash run_generation_transfuser.sh
 ```
+
 
 
 
