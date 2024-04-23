@@ -154,6 +154,8 @@ bash run_generation_transfuser.sh
 
 iii) If you want to toggle specific building in the scenario use argument –building_remove run_generation_transfuser.sh, and select the building you want to remove by making corresponding changes to building_remove.py file. 
 
+![alt text](https://github.com/SanjeethaPennada/King-Replay/blob/main/Images/Building.png)
+
 #Define your location (replace these coordinates with your actual location) <br />
 location = carla.Location(x=-150.0, y=30.0, z=50.0)  # to remove top left building   <br />
 location = carla.Location(x=-150.0, y=70.0, z=50.0)  # to remove bottom left building  <br />
@@ -176,5 +178,6 @@ Then run:
 ```Shell
 bash run_generation_transfuser.sh
 ```
+
 
 
