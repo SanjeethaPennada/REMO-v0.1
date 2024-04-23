@@ -43,6 +43,7 @@ Download and setup CARLA 0.9.15.
 chmod +x setup_carla.sh
 ./setup_carla.sh
 ```
+![alt text](https://github.com/SanjeethaPennada/King-Replay/blob/main/Images/CARLA.png)
 
 ### Transfuser
 To generate scenarios for [TransFuser](https://github.com/autonomousvision/transfuser), you need to download the model weights:
@@ -63,13 +64,13 @@ We provide a bash script for convenience. Please make sure the "CARLA_ROOT" ("./
 #### Running the code
 For the generation script, first spin up a carla server in a separate shell:
 ```Shell
-carla_server/CarlaUE4.sh --world-port=2000 -RenderOffScreen 
+carla_server/CarlaUE4.sh
 ```
 If you cannot separate the shell, execute the script in the background.
 ```Shell
-nohup carla_server/CarlaUE4.sh --world-port=2000 -RenderOffScreen &
+nohup carla_server/CarlaUE4.sh 
 ```
-Following script will run generation and automatically evaluate the results.
+Following script will run generation and automatically replay scenario with modifications and detect collisions. 
 
 ##### TransFuser generation
 For Transfuser generation using both gradient paths, open run_generation_transfuser.sh, change number of agents to 1 or 2 or 4 based on your choice (default = 4 agents) and run:
@@ -88,15 +89,19 @@ generation_results_transfuser/
     ├── opt.pkl
     └── opt.txt
 ```
+### Collision detection
+
+Collisions are also detected in the scenario using Collision rate
+
+![alt text](https://github.com/SanjeethaPennada/King-Replay/blob/main/Images/collision detection.png)
 
 ### Scenario Visualization
-
 #### Running the code
 First spin up a carla server in a separate shell:
 ```Shell
-carla_server/CarlaUE4.sh --world-port=2000 -RenderOffScreen
+carla_server/CarlaUE4.sh 
 ```
-After providing the directory name you want to visualize as an argument, run the following script. The default directory is set to "generation_results".
+Run the following script. The default directory is set to "generation_results_transfuser".
 ```Shell
 bash run_visualization.sh generation_results_transfuser
 ```
@@ -140,8 +145,7 @@ i) change weather to CloudyNight: Use argument –cloudy_night in run_generation
 ```Shell
 bash run_generation_transfuser.sh
 ```
-
-
+![alt text](https://github.com/SanjeethaPennada/King-Replay/blob/main/Images/weather.png)
 
 The scenario is generated with cloudy_night settings. 
 
@@ -149,8 +153,7 @@ ii) Toggle off all the buildings in a scenario using –building argument in run
 ```Shell
 bash run_generation_transfuser.sh
 ```
-
-
+![alt text](https://github.com/SanjeethaPennada/King-Replay/blob/main/Images/toggling.png)
 
 iii) If you want to toggle specific building in the scenario use argument –building_remove run_generation_transfuser.sh, and select the building you want to remove by making corresponding changes to building_remove.py file. 
 
@@ -178,6 +181,7 @@ Then run:
 ```Shell
 bash run_generation_transfuser.sh
 ```
+
 
 
 
