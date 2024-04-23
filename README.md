@@ -79,7 +79,7 @@ bash run_generation_transfuser.sh
 
 #### Getting results
 ```Shell
-generation_results/
+generation_results_transfuser/
 ├── agents_4
     ├── RouteScenario_136_to_136
     │   ├── results.json
@@ -106,7 +106,7 @@ bash run_visualization.sh generation_results_transfuser
 generation_results_transfuser/
 └── agents_4
     ├── RouteScenario_136_to_136
-    │   ├── RouteScenario_112_iter_4.gif
+    │   ├── RouteScenario_136_iter_0.gif
     │   ├── results.json
     │   └── scenario_records.json
    
@@ -116,10 +116,8 @@ generation_results_transfuser/
 ```
 
 #### Replaying scenario with modifications
-Open run_generation_transfuser.sh file, and use below arguments to replay scenario with modification. 
-To replay a scenario with modifications, open run_generation_transfuser.sh file, and type below arguments to tailor the environment.
+Open run_generation_transfuser.sh file, and use below arguments to replay scenario with modifications. 
 
- 
 a) --building     - to remove all buildings in the Town. <br />
 b) --building_remove    - to remove specific buildings in the selected scenario. You can also particularly specify which building to be removed by making changes to the building_remove.py file.  <br />
 c) --trafficlight_remove  - to remove traffic lights in the selected scenario.  <br />
@@ -133,5 +131,50 @@ j) --MidRainDawn/ --MidRainMorning / --MidRainNight / --MidRainNoon /  --MidRain
 k) --SoftRainDawn/ --SoftRainMorning / --SoftRainNight / --SoftRainNoon / --SoftRainSunset/ --SoftRainTwilight - Set soft rain weather conditions.  <br />
 l) --WetCloudyDawn/ --WetCloudyMorning / --WetCloudyNight/ --WetCloudyNoon/ --WetCloudySunset/ --WetCloudyTwilight  - Set wet cloudy weather conditions.  <br />
 m) --WetDawn/ --WetMorning / --WetNight / --WetNoon / --WetSunset / --WetTwilight  - Set wet weather conditions.
+
+#### For example, to replay scenario with modifications: 
+
+Open run_generation_transfuser.sh file, and type below arguments to tailor the environment. Add arguments as indicated in generate_scenarios.py file.  For example if you would like to 
+
+i) change weather to CloudyNight: Use argument –cloudy_night in run_generation_transfuser.sh, spin up CARLA and open terminal to run:
+```Shell
+bash run_generation_transfuser.sh
+```
+
+
+
+The scenario is generated with cloudy_night settings. 
+
+ii) Toggle off all the buildings in a scenario using –building argument in run_generation_transfuser.sh, then run:
+```Shell
+bash run_generation_transfuser.sh
+```
+
+
+
+iii) If you want to toggle specific building in the scenario use argument –building_remove run_generation_transfuser.sh, and select the building you want to remove by making corresponding changes to building_remove.py file. 
+
+#Define your location (replace these coordinates with your actual location) <br />
+location = carla.Location(x=-150.0, y=30.0, z=50.0)  # to remove top left building   <br />
+location = carla.Location(x=-150.0, y=70.0, z=50.0)  # to remove bottom left building  <br />
+location = carla.Location(x=-80.0, y=100.0, z=100.0)  # to remove top right building   <br />
+location = carla.Location(x=-80.0, y=180.0, z=120.0)  # to remove bottom right building  <br />
+
+#Define the radius within which to search for buildings <br />
+radius = 100.0  #to remove  top left building  <br />
+radius = 100.0  # to remove bottom left building  <br />
+radius = 150.0  # to remove top right building  <br />
+radius = 200.0  # to remove bottom right building  <br />
+
+#Collect the IDs of the first n buildings <br />
+first_n_building_ids = [building.id for building in building_objects[:60]] # to remove top left building   <br />
+first_n_building_ids = [building.id for building in building_objects[:100]]  #to remove bottom left building  <br />
+first_n_building_ids = [building.id for building in building_objects[:10]]  # to remove top right building   <br />
+first_n_building_ids = [building.id for building in building_objects[:45]] # to remove bottom right building  <br />
+
+Then run:
+```Shell
+bash run_generation_transfuser.sh
+```
 
 

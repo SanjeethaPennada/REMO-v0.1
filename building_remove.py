@@ -52,7 +52,7 @@ building_ids = get_building_ids_at_location(world, location, radius)
 env_objs = world.get_environment_objects(carla.CityObjectLabel.Buildings)
 building_objects = [obj for obj in env_objs if obj.id in building_ids]
 
-# Collect the IDs of the first 10 buildings
+# Collect the IDs of the first n buildings
 first_n_building_ids = [building.id for building in building_objects[:60]] # top left
 #first_n_building_ids = [building.id for building in building_objects[:100]]  #bottom left
 #first_n_building_ids = [building.id for building in building_objects[:10]]  # top right
