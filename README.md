@@ -93,7 +93,7 @@ generation_results_transfuser/
 
 Collisions are also detected in the scenario using Collision rate
 
-![alt text](https://github.com/SanjeethaPennada/King-Replay/blob/main/Images/collision detection.png)
+![alt text](https://github.com/SanjeethaPennada/King-Replay/blob/main/Images/collision_detection.png)
 
 ### Scenario Visualization
 #### Running the code
