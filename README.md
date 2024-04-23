@@ -12,6 +12,8 @@
 - nvidia driver
 - CARLA 0.9.15
 
+Here's the [Step by step process to replay KING with modifications](https://github.com/SanjeethaPennada/King-Replay/blob/main/Step%20by%20step%20process%20to%20replay%20KING%20with%20modifications%20.pdf) 
+
 ## Setup
 Clone the repo
 ```Shell
