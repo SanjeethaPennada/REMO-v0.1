@@ -45,6 +45,8 @@ chmod +x setup_carla.sh
 ```
 ![alt text](https://github.com/SanjeethaPennada/King-Replay/blob/main/Images/CARLA.png)
 
+Make sure to install all the required packages from [requirements.txt](https://github.com/SanjeethaPennada/King-Replay/blob/main/requirements.txt)
+
 ### Transfuser
 To generate scenarios for [TransFuser](https://github.com/autonomousvision/transfuser), you need to download the model weights:
 ```Shell
@@ -135,7 +137,8 @@ i) --HardRainDawn / --HardRainMorning/ --HardRainNight/ --HardRainNoon/ --HardRa
 j) --MidRainDawn/ --MidRainMorning / --MidRainNight / --MidRainNoon /  --MidRainSunset  / --MidRainTwilight - Set medium rain conditions.  <br />
 k) --SoftRainDawn/ --SoftRainMorning / --SoftRainNight / --SoftRainNoon / --SoftRainSunset/ --SoftRainTwilight - Set soft rain weather conditions.  <br />
 l) --WetCloudyDawn/ --WetCloudyMorning / --WetCloudyNight/ --WetCloudyNoon/ --WetCloudySunset/ --WetCloudyTwilight  - Set wet cloudy weather conditions.  <br />
-m) --WetDawn/ --WetMorning / --WetNight / --WetNoon / --WetSunset / --WetTwilight  - Set wet weather conditions.
+m) --WetDawn/ --WetMorning / --WetNight / --WetNoon / --WetSunset / --WetTwilight  - Set wet weather conditions. <br />
+n) --dynamic_weather - Set dynamic weather conditions. 
 
 #### For example, to replay scenario with modifications: 
 
@@ -181,6 +184,7 @@ Then run:
 ```Shell
 bash run_generation_transfuser.sh
 ```
+
 
 
 
