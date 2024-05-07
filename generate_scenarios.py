@@ -220,6 +220,14 @@ def trafficlight_change_script():
     # Run trafficlight_change.py
     subprocess.Popen(["python3", "trafficlight_change.py"])
 
+def specific_traffic_light_change_script():
+    # Run trafficlight_change.py
+    subprocess.Popen(["python3", "specific_traffic_light_change.py"])
+
+
+def removal_script():
+    subprocess.Popen(["python3", "specific_trafficlight_remove.py"])
+
 
 
 class GenerationEngine:
@@ -671,6 +679,8 @@ def main(args):
         trafficlight_remove_script()
     if args.trafficlight_change:
         trafficlight_change_script()
+    if args.specific_traffic_light_change:
+        specific_traffic_light_change_script()   
         
     if args.cloudy_dawn:
         CloudyDawn_script()
@@ -749,6 +759,8 @@ def main(args):
         WetSunset_script()
     if args.wet_twilight:
         WetTwilight_script()
+    if args.removal:
+        removal_script()
     engine.run()
 
 
@@ -911,7 +923,7 @@ if __name__ == '__main__':
     main_parser.add_argument("--building_remove", action='store_true', help="Run building_remove.py")
     main_parser.add_argument("--trafficlight_remove", action='store_true', help="Run trafficlight_remove.py")
     main_parser.add_argument("--trafficlight_change", action='store_true', help="Run trafficlight_change.py")
-    
+    main_parser.add_argument("--specific_traffic_light_change", action='store_true', help="Run specific_traffic_light_change.py")
     main_parser.add_argument("--cloudy_dawn", action='store_true', help="Run CloudyDawn_script()")
     main_parser.add_argument("--cloudy_morning", action='store_true', help="Run CloudyMorning_script()")
     main_parser.add_argument("--cloudy_night", action='store_true', help="Run CloudyNight_script()")
@@ -953,7 +965,7 @@ if __name__ == '__main__':
     main_parser.add_argument("--wet_noon", action='store_true', help="Run WetNoon_script()")
     main_parser.add_argument("--wet_sunset", action='store_true', help="Run WetSunset_script()")
     main_parser.add_argument("--wet_twilight", action='store_true', help="Run WetTwilight_script()")
-    
+    main_parser.add_argument("--removal", action='store_true', help="Run removal_script()")
 
     args = main_parser.parse_args()
     
