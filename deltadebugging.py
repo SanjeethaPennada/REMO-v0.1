@@ -1,3 +1,10 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Mon May 13 21:41:45 2024
+
+@author: Sanjeetha Pennada
+"""
+
 #Delta Debugging implements the strategy sketched above: It first removes larger chunks
 # of size  12 ; if this does not fail, then we proceed to chunks of size  14  , 
 #then  18 and so on. Our ddmin() implementation uses the exact same Python 
@@ -56,9 +63,9 @@ def ddmin(test: Callable, inp: Sequence, *test_args: Any) -> Sequence:
 if __name__ == "__main__":
     # Original test input and failure-inducing sets
     x = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-    F = [[1, 2], [4,5,7]]
+    F = [[1, 8]]
 
-    # Define your test function
+    # Define test function
     def test_function(inp):
         return induce_failure(inp, F)
 
