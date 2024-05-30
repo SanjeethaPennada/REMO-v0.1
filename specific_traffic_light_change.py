@@ -8,7 +8,7 @@ client.set_timeout(2.0)
 world = client.get_world()
 
 # Get the traffic light with ID 69
-traffic_light = world.get_actor(69)
+traffic_light = world.get_actor(98)
 
 # Change the state of the traffic light to stop
 if traffic_light:

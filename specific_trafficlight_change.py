@@ -9,7 +9,7 @@ world = client.load_world('Town03')
 
 
 # Define the IDs of the traffic lights you want to change their state
-traffic_light_ids = [69, 80, 107, 108]  # Replace with the IDs of the traffic lights you want to change
+traffic_light_ids = [97,98,99,100]  # Replace with the IDs of the traffic lights you want to change
 
 # Change the state of each traffic light by its ID
 for traffic_light_id in traffic_light_ids:

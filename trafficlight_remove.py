@@ -11,7 +11,7 @@ world = client.load_world('Town03')
 traffic_lights = world.get_actors().filter("*traffic_light*")
 
 # Store the IDs of traffic lights
-traffic_light_ids = []
+traffic_light_ids = [97,98,99,100]
 
 # Retrieve IDs of traffic lights
 for traffic_light in traffic_lights:
