@@ -20,7 +20,7 @@ ids_to_turn_off = [
 def set_weather_conditions(world, weather_conditions):
     weather = carla.WeatherParameters()
 
-    # Initialize default weather parameters
+    # Initialize default weather parameters, if the test input contains the list of weather_conditions, then the below are executed, or else default settings will be executed.
     weather.precipitation = 0.0
     weather.precipitation_deposits = 0.0
     weather.wind_intensity = 0.20
@@ -122,11 +122,11 @@ def configure_environment(inp):
             print(f"Street light with ID {light_id} has been turned off.")
 
     # Spawn bike if True is in the input list
-    if True in inp:
+    if 'Bike' in inp:
         spawn_bike(world)
 
     # Spawn pedestrian if True is in the input list
-    if True in inp:
+    if 'Pedestrain' in inp:
         spawn_pedestrian(world)
 
     # Save world changes
@@ -135,7 +135,7 @@ def configure_environment(inp):
 import json
 
 if __name__ == "__main__":
-    # Usage with test input from a JSON file
+    # Usage with test input from a JSON file, reads input from test_input.json and configure environment accordingly and execute scenario under similar settings
     with open('test_input.json', 'r') as f:
         test_input_from_file = json.load(f)
     
