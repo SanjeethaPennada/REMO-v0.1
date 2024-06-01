@@ -126,7 +126,7 @@ def configure_environment(inp):
         spawn_bike(world)
 
     # Spawn pedestrian if True is in the input list
-    if 'Pedestrain' in inp:
+    if 'Pedestrian' in inp:
         spawn_pedestrian(world)
 
     # Save world changes
