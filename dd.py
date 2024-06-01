@@ -34,7 +34,7 @@ def ddmin(test, inp, *test_args):
         while start < len(inp):
             complement = inp[:start] + inp[start + subset_length:]
             error_triggered = test(complement, *test_args) == PASS
-            print(f"{step_count:<5} | {complement}{' '*(40-len(str(complement)))}| {'✓' if error_triggered else '❌'}")
+            print(f"{step_count:<5} | {complement}{' '*(40-len(str(complement)))}| {'PASS' if error_triggered else 'FAIL'}")
             step_count += 1  # Increment step count here
             if error_triggered:
                 inp = complement
@@ -100,7 +100,7 @@ def get_collision_rate(inp):
     return collision_rate
 
 if __name__ == "__main__":
-    initial_test_input = building_ids + traffic_light_ids + ids_to_turn_off + weather_conditions + [True, True] 
+    initial_test_input = building_ids + traffic_light_ids + ids_to_turn_off + weather_conditions + ['Bike', 'Pedestrian'] 
     print(f"Initial Test Input: {initial_test_input}")
     minimal_input = ddmin(test_function, initial_test_input)
     print(f"Minimal failure-inducing input: {minimal_input}")
