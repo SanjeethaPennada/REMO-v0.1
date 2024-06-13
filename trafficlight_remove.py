@@ -11,6 +11,7 @@ world = client.load_world('Town03')
 traffic_lights = world.get_actors().filter("*traffic_light*")
 
 # Store the IDs of traffic lights
+ #Remember giving IDs may not work always because continuous running of carla world will change IDs of traffic lights only, so if you are not planning to load carla world for every iteration then try getting the locations of traffic lights using IDs, and if you are loading CARLA world for every iteration directly rmeove traffic lights using IDs
 traffic_light_ids = [97,98,99,100]
 
 # Retrieve IDs of traffic lights

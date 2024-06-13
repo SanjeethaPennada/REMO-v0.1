@@ -21,14 +21,10 @@ def control_bike(bike):
 try:
     client = carla.Client('localhost', 2000)
     client.set_timeout(2.0)
-    world = client.get_world()
-
-
-# Load the CARLA world
+    # Load the CARLA world
     #world = client.load_world('Town03')
-
-
-
+    #Get the current CARLA world
+    world = client.get_world()
 
     # Define the spawn location for the bike
     spawn_location = carla.Location(x=-80.679825, y=1.284156, z=0.5)  # Adjust as needed
