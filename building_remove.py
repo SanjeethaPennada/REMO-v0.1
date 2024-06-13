@@ -30,20 +30,20 @@ def get_building_ids_at_location(world, location, radius):
 
 
 
-# Define your location (replace these coordinates with your actual location)
-location = carla.Location(x=-150.0, y=30.0, z=50.0)  # top left
-#location = carla.Location(x=-150.0, y=70.0, z=50.0)  # bottom left
-#location = carla.Location(x=-80.0, y=100.0, z=100.0)  # top right
-#location = carla.Location(x=-80.0, y=180.0, z=120.0)  # bottom right
+# Define your location (replace these coordinates with your actual location based on selected scenario 
+location = carla.Location(x=-150.0, y=30.0, z=50.0)  # to remove buildings in top left 
+#location = carla.Location(x=-150.0, y=70.0, z=50.0)  # to remove buildings in bottom left
+#location = carla.Location(x=-80.0, y=100.0, z=100.0)  # to remove buildings in top right
+#location = carla.Location(x=-80.0, y=180.0, z=120.0)  # to remove buildings in bottom right
 
 # Move the spectator to the specified location
 set_spectator_location(world, location)
 
 # Define the radius within which to search for buildings
-radius = 400.0  # top left
-#radius = 100.0  # bottom left
-#radius = 150.0  # top right
-#radius = 200.0  # bottom right
+radius = 400.0  # to remove buildings in top left
+#radius = 100.0  # to remove buildings in bottom left
+#radius = 150.0  # to remove buildings in top right
+#radius = 200.0  # to remove buildings in bottom right
 
 
 # Get building IDs at the specified location within the radius

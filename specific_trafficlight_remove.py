@@ -5,10 +5,12 @@ def main():
     client = carla.Client('localhost', 2000)
     client.set_timeout(2.0)
 
-    # Load the CARLA world
+    # Load the CARLA world and make required changes
     world = client.load_world('Town03')
+    #Get the current CARLA world if trying to incorporate the chnages in the current world
+    #world = client.get_world()
 
-    # Define the target locations to remove traffic lights from (97,98,99,100)
+    # Define the target locations to remove traffic lights from (97,98,99,100), but remember giving IDs may not work always because continuous running of carla world will change IDs of traffic lights only, so if you are not planning to load carla world for every iteration then try getting the locations of traffic lights using IDs 
     target_locations = [
         carla.Location(x=16.628286, y=-146.755920, z=0.0),
         carla.Location(x=-11.506108, y=-125.105507, z=0.152402),
