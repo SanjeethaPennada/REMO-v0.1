@@ -52,24 +52,32 @@ def run_dd(start_n, end_n, F):
     return reduced_sequence, num_steps
 
 def generate_output():
-    # Get selected start and end n values which is input size
-    start_n = int(start_n_entry.get())
-    end_n = int(end_n_entry.get())
+    try:
+        # Get selected start and end n values which is input size
+        start_n = int(start_n_entry.get())
+        end_n = int(end_n_entry.get())
 
-    # Get F set from the entry widget
-    F_set = eval(F_entry.get())  # Assuming F is entered as a list of lists
+        # Get F set from the entry widget
+        F_set = eval(F_entry.get())  # Assuming F is entered as a list of lists
+        
+        # Validate F to ensure it's a list of lists
+        if not isinstance(F_set, list) or not all(isinstance(subset, list) for subset in F_set):
+            messagebox.showerror("Invalid Input", "F must be a list of lists. E.g., [[1, 2], [3, 4]]")
+            return
 
-    # Run Delta Debugging and get the output
-    output_sequence, num_steps = run_dd(start_n, end_n, F_set)
+        # Run Delta Debugging and get the output
+        output_sequence, num_steps = run_dd(start_n, end_n, F_set)
 
-    # Display the output
-    output_text.config(state=tk.NORMAL)
-    output_text.delete(1.0, tk.END)
-    output_text.insert(tk.END, "Reduced Input Sequence:\n")
-    output_text.insert(tk.END, str(output_sequence))
-    output_text.insert(tk.END, "\n\nNumber of Steps: ")
-    output_text.insert(tk.END, str(num_steps))
-    output_text.config(state=tk.DISABLED)
+        # Display the output
+        output_text.config(state=tk.NORMAL)
+        output_text.delete(1.0, tk.END)
+        output_text.insert(tk.END, "Reduced Input Sequence:\n")
+        output_text.insert(tk.END, str(output_sequence))
+        output_text.insert(tk.END, "\n\nNumber of Steps: ")
+        output_text.insert(tk.END, str(num_steps))
+        output_text.config(state=tk.DISABLED)
+    except Exception as e:
+        messagebox.showerror("Error", f"An error occurred: {e}")
 
 root = tk.Tk()
 root.title("Delta Debugging GUI")
@@ -101,3 +109,4 @@ output_text.grid(row=4, column=0, columnspan=2)
 output_text.config(state=tk.DISABLED)
 
 root.mainloop()
+
