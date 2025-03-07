@@ -2,7 +2,8 @@
 
 This repository contains the code to record and replay a scenario with modifications in CARLA. If you find this repository useful, please cite. 
 
-![alt text](https://github.com/SanjeethaPennada/REMO/blob/main/Images/REMO.png)
+![alt text](https://github.com/SanjeethaPennada/ REplay-with-MOdifications
+/blob/main/Images/REMO.png)
 
 ## Contents
 1. [Prerequisites](#Prerequisites)
@@ -57,7 +58,8 @@ chmod +x setup_carla.sh
 ./setup_carla.sh
 ```
 
-Install all the required packages from [requirements.txt](https://github.com/SanjeethaPennada/REMO/blob/main/requirements)
+Install all the required packages from [requirements.txt](https://github.com/SanjeethaPennada/ REplay-with-MOdifications
+/blob/main/requirements)
 
 
 
