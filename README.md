@@ -57,8 +57,7 @@ chmod +x setup_carla.sh
 ./setup_carla.sh
 ```
 
-Install all the required packages from [requirements.txt](https://github.com/SanjeethaPennada/ REplay-with-MOdifications
-/blob/main/requirements)
+Install all the required packages from [requirements.txt](https://github.com/SanjeethaPennada/carla-REMO/blob/main/requirements)
 
 
 
