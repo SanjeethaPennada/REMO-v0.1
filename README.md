@@ -2,8 +2,7 @@
 
 This repository contains the code to record and replay a scenario with modifications in CARLA. If you find this repository useful, please cite. 
 
-![alt text](https://github.com/SanjeethaPennada/ REplay-with-MOdifications
-/blob/main/Images/REMO.png)
+![alt text](https://github.com/SanjeethaPennada/carla-REMO/blob/main/Images/REMO.png)
 
 ## Contents
 1. [Prerequisites](#Prerequisites)
@@ -83,7 +82,7 @@ python3 start_recording.py
 ```
 This should open a Scenario Recorder GUI as shown below to start and stop recording a scenario. 
 
-![alt text](https://github.com/SanjeethaPennada/REMO/blob/main/Images/Scenario_Recorder.png)
+![alt text](https://github.com/SanjeethaPennada/carla-REMO/blob/main/Images/Scenario_Recorder.png)
 
 Now, open and run the following script in a separate shell to run the scenario: 
 ```Shell
