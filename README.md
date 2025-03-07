@@ -1,6 +1,18 @@
-# Replay of "KING" 
+# CARLA - Replay with Modifications (REMO)
 
-## Requirements
+This repository contains the code to record and replay a scenario with modifications in CARLA. If you find this repository useful, please cite. 
+
+![alt text](https://github.com/SanjeethaPennada/REMO/blob/main/Images/REMO.png)
+
+## Contents
+1. [Prerequisites](#Prerequisites)
+2. [Setup](#setup)
+3. [Scenario Generation](#Scenario-Generation)
+4. [Record](#record)
+5. [Replay](#replay)
+6. [REMO](#REMO (Replay-with-Modifications))
+
+## Prerequisites
 
 ### Hardware
 - GPU: NVIDIA Corporation
@@ -12,12 +24,11 @@
 - nvidia driver
 - CARLA 0.9.15
 
-Here's the [Step by step process to replay KING with modifications](https://github.com/SanjeethaPennada/King-Replay/blob/main/Step%20by%20step%20process%20to%20replay%20KING%20with%20modifications%20.pdf) 
-
 ## Setup
+
 Clone the repo
 ```Shell
-git clone https://github.com/SanjeethaPennada/King-Replay.git
+git clone https://github.com/SanjeethaPennada/REMO.git
 cd king
 ```
 
@@ -45,150 +56,100 @@ Download and setup CARLA 0.9.15.
 chmod +x setup_carla.sh
 ./setup_carla.sh
 ```
-![alt text](https://github.com/SanjeethaPennada/King-Replay/blob/main/Images/CARLA.png)
 
-Make sure to install all the required packages from [requirements.txt](https://github.com/SanjeethaPennada/King-Replay/blob/main/requirements.txt)
+Install all the required packages from [requirements.txt](https://github.com/SanjeethaPennada/REMO/blob/main/requirements)
 
-### Transfuser
-To generate scenarios for [TransFuser](https://github.com/autonomousvision/transfuser), you need to download the model weights:
-```Shell
-mkdir -p driving_agents/king/transfuser/model_checkpoints/regular
-cd driving_agents/king/transfuser/model_checkpoints/regular
-wget https://s3.eu-central-1.amazonaws.com/avg-projects/transfuser/models.zip
-unzip models.zip
-rm -rf models.zip late_fusion geometric_fusion cilrs aim
-cd -
-```
 
-## How to run
 
-### Scenario Replay
-We provide a bash script for convenience. Please make sure the "CARLA_ROOT" ("./carla_server" by default) and "KING_ROOT" (if present) environment variables are set correctly in all of those scripts.
+## Scenario Generation 
+The record and replay functionality is primarily used to streamline the testing of scenarios, eliminating the need for separate scenario-generating files. This approach allows all scenarios to be replayed from a central source, regardless of external folders. To achieve this, a  scenarios was generated from [KING: Generating Safety-Critical Driving Scenarios for Robust Imitation via Kinematics Gradients](https://github.com/autonomousvision/king/tree/main) and executed using Transfuser Autonomous Driving Systems (ADS), which controls the ego vehicle. 
 
-#### Running the code
-For the generation script, first spin up a carla server in a separate shell:
-```Shell
-carla_server/CarlaUE4.sh
-```
-If you cannot separate the shell, execute the script in the background.
-```Shell
-nohup carla_server/CarlaUE4.sh 
-```
-Following script will run generation and automatically replay scenario with modifications and detect collisions. 
+### Running the Code
+We provide bash scripts for the experiments for convenience. Please make sure the "CARLA_ROOT" ("./carla_server" by default) and "KING_ROOT" (if present) environment variables are set correctly in all of those scripts. 
 
-##### TransFuser generation
-For Transfuser generation using both gradient paths, open run_generation_transfuser.sh, change number of agents to 1 or 2 or 4 based on your choice (default = 4 agents) and run:
-```Shell
-bash run_generation_transfuser.sh
-```
 
-#### Getting results
-```Shell
-generation_results_transfuser/
-├── agents_4
-    ├── RouteScenario_136_to_136
-    │   ├── results.json
-    │   └── scenario_records.json
-    ...
-    ├── opt.pkl
-    └── opt.txt
-```
-### Collision detection
+## Record
 
-Collisions are detected in the scenario using Collision rate as shown below:
-
-![alt text](https://github.com/SanjeethaPennada/King-Replay/blob/main/Images/collision_detection.png)
-
-### Scenario Visualization
-#### Running the code
 First spin up a carla server in a separate shell:
 ```Shell
-carla_server/CarlaUE4.sh 
+carla_server/CarlaUE4.sh --world-port=2000 -opengl
 ```
-Run the following script. The default directory is set to "generation_results_transfuser".
+
+Run the following script in a separate shell: 
 ```Shell
-bash run_visualization.sh generation_results_transfuser
+python3 start_recording.py
 ```
+This should open a Scenario Recorder GUI as shown below to start and stop recording a scenario. 
 
-#### Getting results
-```Shell
-generation_results_transfuser/
-└── agents_4
-    ├── RouteScenario_136_to_136
-    │   ├── RouteScenario_136_iter_0.gif
-    │   ├── results.json
-    │   └── scenario_records.json
-   
-    ...
-    ├── opt.pkl
-    └── opt.txt
-```
+![alt text](https://github.com/SanjeethaPennada/REMO/blob/main/Images/Scenario_Recorder.png)
 
-#### Replaying scenario with modifications
-Open run_generation_transfuser.sh file, and use below arguments to replay scenario with modifications. 
-
-a) --building     - to remove all buildings in the Town. <br />
-b) --building_remove    - to remove specific buildings in the selected scenario. You can also particularly specify which building to be removed by making changes to the building_remove.py file.  <br />
-c) --trafficlight_remove  - to remove traffic lights in the selected scenario.  <br />
-d) --trafficlight_change  - to change the state of the traffic lights in the selected scenario.  <br />
-e) --weather_afn          - to change weather conditions to afternoon.  <br />
-f) --weather_mrng         - to change weather to morning.  <br /> 
-g) --weather_rain         - to change weather to raining condition.  <br />
-h) --CloudyDawn / --CloudyMorning/ --CloudyNight /--CloudyNoon / --CloudySunset / --Cloudytwilight - Set cloudy weather conditions.  <br />
-i) --HardRainDawn / --HardRainMorning/ --HardRainNight/ --HardRainNoon/ --HardRainSunset/ --HardRainTwilight - Set hard rain weather conditions.  <br />
-j) --MidRainDawn/ --MidRainMorning / --MidRainNight / --MidRainNoon /  --MidRainSunset  / --MidRainTwilight - Set medium rain conditions.  <br />
-k) --SoftRainDawn/ --SoftRainMorning / --SoftRainNight / --SoftRainNoon / --SoftRainSunset/ --SoftRainTwilight - Set soft rain weather conditions.  <br />
-l) --WetCloudyDawn/ --WetCloudyMorning / --WetCloudyNight/ --WetCloudyNoon/ --WetCloudySunset/ --WetCloudyTwilight  - Set wet cloudy weather conditions.  <br />
-m) --WetDawn/ --WetMorning / --WetNight / --WetNoon / --WetSunset / --WetTwilight  - Set wet weather conditions. <br />
-n) --dynamic_weather - Set dynamic weather conditions. 
-
-#### For example, to replay scenario with modifications: 
-
-Open run_generation_transfuser.sh file, and type below arguments to tailor the environment. Add arguments as indicated in generate_scenarios.py file.  For example if you would like to 
-
-i) change weather to CloudyNight: Use argument –cloudy_night in run_generation_transfuser.sh, spin up CARLA and open terminal to run:
+Now, open and run the following script in a separate shell to run the scenario: 
 ```Shell
 bash run_generation_transfuser.sh
 ```
-![alt text](https://github.com/SanjeethaPennada/King-Replay/blob/main/Images/weather.png)
+Once the scenario is generated in CARLA - start and stop recording it using Scenario Recorder GUI. The recorded scenario will be saved as test.log.
 
-The scenario is generated with cloudy_night settings. 
+Close carla server. 
 
-ii) Toggle off all the buildings in a scenario using –building argument in run_generation_transfuser.sh, then run:
+## Replay
+
+Spin up a carla server again in previous shell:
 ```Shell
-bash run_generation_transfuser.sh
+carla_server/CarlaUE4.sh --world-port=2000 -opengl
 ```
-![alt text](https://github.com/SanjeethaPennada/King-Replay/blob/main/Images/toggling.png)
-
-iii) If you want to toggle specific building in the scenario use argument –building_remove run_generation_transfuser.sh, and select the building you want to remove by making corresponding changes to building_remove.py file. 
-
-![alt text](https://github.com/SanjeethaPennada/King-Replay/blob/main/Images/Building.png)
-
-#Define your location (replace these coordinates with your actual location) <br />
-location = carla.Location(x=-150.0, y=30.0, z=50.0)  # to remove top left building   <br />
-location = carla.Location(x=-150.0, y=70.0, z=50.0)  # to remove bottom left building  <br />
-location = carla.Location(x=-80.0, y=100.0, z=100.0)  # to remove top right building   <br />
-location = carla.Location(x=-80.0, y=180.0, z=120.0)  # to remove bottom right building  <br />
-
-#Define the radius within which to search for buildings <br />
-radius = 100.0  #to remove  top left building  <br />
-radius = 100.0  # to remove bottom left building  <br />
-radius = 150.0  # to remove top right building  <br />
-radius = 200.0  # to remove bottom right building  <br />
-
-#Collect the IDs of the first n buildings <br />
-first_n_building_ids = [building.id for building in building_objects[:60]] # to remove top left building   <br />
-first_n_building_ids = [building.id for building in building_objects[:100]]  #to remove bottom left building  <br />
-first_n_building_ids = [building.id for building in building_objects[:10]]  # to remove top right building   <br />
-first_n_building_ids = [building.id for building in building_objects[:45]] # to remove bottom right building  <br />
-
-Then run:
+#### Scenario replay using .log file
+Run the following script in a separate shell: 
 ```Shell
-bash run_generation_transfuser.sh
+python3 start_replaying.py
+```
+This replay uses test.log to replay the recorded scenario. CARLA offers built-in [record and replay](https://carla.readthedocs.io/en/0.9.6/recorder_and_playback/) features, enabling scenarios to be replayed using a `test.log` file. This log captures the behavior of the ego and adversarial vehicles, which can be replayed deterministically. Our objective is to replay the same scenario with modifications such as creating or removing actors, changing traffic light states, or adjusting the number of adversarial vehicles in the simulation. Since the `.log` file is in binary format, it does not allow such modifications. To achieve these modifications, the `.log` file needs to be converted into a more accessible format, such as `.json` file.
+
+#### Convert .log to .json
+Run the following script: 
+```Shell
+python3 log_to_json.py
+```
+This creates test.json file. Replay the scenario using test.json file by running the following script: 
+
+#### Scenario replay using .json file
+Run the following script: 
+```Shell
+python3 replay_json.py
 ```
 
+## REMO (Replay with Modifications)
+Now, we have got test.jsonDet file that contains ego and adevrsarial vehicles information. 
+
+#### Replay without ego vehicle 
+We can remove ego vehicle information from test.json, leaving only the adversarial vehicle data. 
+
+Give the ego vehicle id and run the following script: 
+```Shell
+python3 remove_ego.py
+```
+This gives NPC.json which contains adversarial vehicles information only.
+
+Replay scenario to verify if ego vehicle is removed or not by running the following script: 
+```Shell
+python3 replay_npcs.py
+```
+This approach allows us to replay the scenario without the ego vehicle (ID=194), ensuring that the NPCs behave deterministically. 
+
+#### Replay with ego vehicle driven by Transfuser
+The `NPC.json` file contains information about adversarial vehicles. The `REMO.py` script runs the ego vehicle, which is controlled by the Transfuser ADS (or any other ADS, as needed). It ensures deterministic behavior of the ego vehicle by loading `NPC.json` into the same environment where the ego vehicle is operating.
+
+To generate the scenario run the following script: 
+```Shell
+bash run_remo.sh
+```
 
 
 
-
-
+## Acknowledgements
+This implementation is based on code from several repositories. We sincerely thank the authors for their awesome work.
+- [CARLA Leaderboard](https://github.com/carla-simulator/leaderboard)
+- [Scenario Runner](https://github.com/carla-simulator/scenario_runner)
+- [KING](https://github.com/autonomousvision/king/tree/main)
+- [Learning by Cheating](https://github.com/dotchen/LearningByCheating)
+- [World on Rails](https://github.com/dotchen/WorldOnRails)
+- [Transfuser](https://github.com/autonomousvision/transfuser)

@@ -32,11 +32,6 @@ PIXELS_PER_METER = 5
 PIXELS_AHEAD_VEHICLE = 110
 
 
-def config_script():
-    # Run scenario with modifications
-    subprocess.Popen(["python3", "config.py"])
-
-
 
 
 class GenerationEngine:
@@ -472,8 +467,6 @@ class GenerationEngine:
 def main(args):
     engine = GenerationEngine(args)
     
-    if args.config:
-        config_script()
    
     engine.run()
 
@@ -629,7 +622,7 @@ if __name__ == '__main__':
         help="Path to the scenario initalization files for the current agent and routes",
     )
 
-    main_parser.add_argument("--config", action='store_true', help="Run config_script()")
+  
 
     args = main_parser.parse_args()
     
