@@ -23,7 +23,7 @@ def main():
     argparser.add_argument('--host', metavar='H', default='127.0.0.1', help='IP of the host server (default: 127.0.0.1)')
     argparser.add_argument('-p', '--port', metavar='P', default=2000, type=int, help='TCP port to listen to (default: 2000)')
     argparser.add_argument('-s', '--start', metavar='S', default=0.0, type=float, help='starting time (default: 0.0)')
-    argparser.add_argument('-d', '--duration', metavar='D', default=10, type=float, help='duration (default: 10)')
+    argparser.add_argument('-d', '--duration', metavar='D', default=5, type=float, help='duration (default: 5)')
     argparser.add_argument('-f', '--recorder-filename', metavar='F', default="test.log", help='recorder filename (test.log)')
     argparser.add_argument('-c', '--camera', metavar='C', default=0, type=int, help='camera follows an actor (ex: 82)')
     argparser.add_argument('-x', '--time-factor', metavar='X', default=1.0, type=float, help='time factor (default 1.0)')
@@ -40,18 +40,12 @@ def main():
         # Set the time factor for the replayer
         client.set_replayer_time_factor(args.time_factor)
 
-        # Set to ignore the hero vehicles or not
-        client.set_replayer_ignore_hero(args.ignore_hero)
-
-        # Set to ignore the spectator camera or not
-        client.set_replayer_ignore_spectator(not args.move_spectator)
-
+    
         # Get the current working directory
         cwd = os.getcwd()
 
         # Join current working directory with the filename
         filename = os.path.join(cwd, args.recorder_filename)
-
         # Replay the session
         print(client.replay_file(filename, args.start, args.duration, args.camera, args.spawn_sensors)) 
 
@@ -62,13 +56,17 @@ def main():
 
         # Record the state throughout the duration of the replay
         start_time = time.time()
+        print(start_time) #this start_time - the start_time in first frame gives time.sleep in npc.py
         while time.time() - start_time < args.duration:
             # Wait a moment for the world to populate
             time.sleep(0.1)
-
+         
+         
             # Poll for current state
             frame_data = {
-                'timestamp': time.time() - start_time,
+                'timestamp': [(time.time() - start_time)],
+                'start_time': [start_time],
+                'time.time': [time.time()],
                 'vehicles': []
             }
 

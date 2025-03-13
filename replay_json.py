@@ -24,15 +24,6 @@ def is_position_occupied(world, location, threshold=2.0):
             return True
     return False
 
-def set_spectator_view(world, target_vehicle):
-    """Attach spectator view to a vehicle."""
-    spectator = world.get_spectator()
-    transform = target_vehicle.get_transform()
-    spectator_transform = carla.Transform(
-        transform.location + carla.Location(z=10, x=-10),
-        transform.rotation
-    )
-    spectator.set_transform(spectator_transform)
 
 def spawn_vehicles_from_json(world, json_data):
     vehicles = {}
@@ -65,17 +56,16 @@ def spawn_vehicles_from_json(world, json_data):
                     vehicles[vehicle_id] = vehicle
                     if ego_vehicle is None:
                         ego_vehicle = vehicle
-                        set_spectator_view(world, ego_vehicle)
-
+                      
         time.sleep(0.1)
 
 def main():
     client = carla.Client('localhost', 2000)
     client.set_timeout(10.0)
-    world = client.load_world('Town03')
+    world = client.get_world()
 
     # Load JSON and spawn vehicles
-    json_file_path = 'test.json'
+    json_file_path = 'NPC.json'
     with open(json_file_path) as f:
         scenario_data = json.load(f)
     spawn_vehicles_from_json(world, scenario_data)

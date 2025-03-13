@@ -6,7 +6,7 @@ with open("test.json", "r") as file:
 
 # Identify and remove ego vehicle from each frame
 for frame in scenario_data["frames"]:
-    frame["vehicles"] = [v for v in frame["vehicles"] if v.get("id") != 194]
+    frame["vehicles"] = [v for v in frame["vehicles"] if v.get("id") != 279]
 
 # Save as NPC.json
 with open("NPC.json", "w") as file:
