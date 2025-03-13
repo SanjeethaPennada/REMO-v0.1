@@ -469,12 +469,11 @@ class GenerationEngine:
 
 def main(args):
     engine = GenerationEngine(args)
-    
+  
    
     if args.rain:
         RainNight_script()
-   
-   
+
     engine.run()
 
 
