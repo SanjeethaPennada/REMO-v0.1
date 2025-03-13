@@ -21,5 +21,5 @@ python generate_scenarios.py \
 
 echo "Results"
 echo "==============="
-python3 tools/parse_generation_results.py --results_dir ./generation_results_transfuser/agents_4 --num_agents 4
+python3 tools/parse_generation_results.py --num_agents 4
 

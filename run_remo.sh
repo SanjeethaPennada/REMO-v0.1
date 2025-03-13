@@ -21,6 +21,6 @@ python REMO.py \
     
 echo "Results"
 echo "==============="
-python3 tools/parse_generation_results.py --results_dir ./generation_results_transfuser/agents_4 
+python3 tools/parse_generation_results.py
 
 

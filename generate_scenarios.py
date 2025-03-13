@@ -469,7 +469,8 @@ class GenerationEngine:
 
 def main(args):
     engine = GenerationEngine(args)
-  
+       
+    #subprocess.Popen(["python3", "ids.py"])
    
     if args.rain:
         RainNight_script()

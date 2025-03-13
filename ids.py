@@ -26,26 +26,29 @@ def get_objects_at_location(world, location, radius, label):
     return [obj.id for obj in all_objects if location.distance(obj.transform.location) <= radius]
 
 def get_nearby_traffic_and_street_lights(world, location, radius):
-    """Retrieve nearby traffic light and street light IDs."""
+    """Retrieve nearby traffic light and street light IDs and locations."""
     entity_ids = {"traffic_light_ids": set(), "street_light_ids": set()}
+    entity_locations = {"traffic_lights": {}, "street_lights": {}}
     
     # Get all actors in the world
     actors = world.get_actors()
     
-    # Get traffic light IDs
+    # Get traffic light IDs and locations
     for actor in actors:
         if 'traffic_light' in actor.type_id:
             if location.distance(actor.get_transform().location) <= radius:
                 entity_ids["traffic_light_ids"].add(actor.id)
+                entity_locations["traffic_lights"][actor.id] = actor.get_transform().location
     
-    # Get street light IDs using Light Manager
+    # Get street light IDs and locations using Light Manager
     light_manager = world.get_lightmanager()
     all_lights = light_manager.get_all_lights()
     for light in all_lights:
         if location.distance(light.location) <= radius:
             entity_ids["street_light_ids"].add(light.id)
+            entity_locations["street_lights"][light.id] = light.location
     
-    return entity_ids
+    return entity_ids, entity_locations
 
 def monitor_vehicle_spawn_and_record_data(world, vehicle_type, radius=50.0):
     """Monitor the world for ego vehicle spawn and record data for nearby buildings and traffic lights."""
@@ -63,26 +66,39 @@ def monitor_vehicle_spawn_and_record_data(world, vehicle_type, radius=50.0):
                 vehicles[actor.id] = actor  # Store reference to the vehicle
                 break
 
-        time.sleep(0.1)  # Avoid high CPU usage
-
-    # Initialize sets for storing unique IDs
+    
+    # Initialize sets for storing unique IDs and locations
     unique_building_ids = set()
     unique_traffic_light_ids = set()
     unique_street_light_ids = set()
+    traffic_light_locations = {}
+    street_light_locations = {}
+    building_locations = {}
 
     # Track the ego vehicle's movement and record data
     while True:
         for vehicle in vehicles.values():
             location = vehicle.get_location()
                 
-            # Retrieve nearby building and light IDs
+            # Retrieve nearby building and light IDs and locations
             building_ids = get_objects_at_location(world, location, radius, carla.CityObjectLabel.Buildings)
-            light_ids = get_nearby_traffic_and_street_lights(world, location, radius)
+            light_ids, light_locations = get_nearby_traffic_and_street_lights(world, location, radius)
             
             # Add to unique sets
             unique_building_ids.update(building_ids)
-            unique_traffic_light_ids.update(light_ids['traffic_light_ids'])
-            unique_street_light_ids.update(light_ids['street_light_ids'])
+            unique_traffic_light_ids.update(light_ids["traffic_light_ids"])
+            unique_street_light_ids.update(light_ids["street_light_ids"])
+            
+            # Add locations to the dictionaries
+            traffic_light_locations.update(light_locations["traffic_lights"])
+            street_light_locations.update(light_locations["street_lights"])
+            
+            # Retrieve building locations based on their IDs from environment objects
+            for building_id in building_ids:
+                all_objects = world.get_environment_objects(carla.CityObjectLabel.Buildings)
+                for obj in all_objects:
+                    if obj.id == building_id:
+                        building_locations[building_id] = obj.transform.location
 
             # Print data to verify
             print(f"Vehicle at {location}, Building IDs: {unique_building_ids}, Traffic Light IDs: {unique_traffic_light_ids}, Street Light IDs: {unique_street_light_ids}")
@@ -92,12 +108,22 @@ def monitor_vehicle_spawn_and_record_data(world, vehicle_type, radius=50.0):
             'building_ids': list(unique_building_ids),
             'street_light_ids': list(unique_street_light_ids)
         }
-        
-        # Save to JSON file
+
+        # Save to output.json
         with open('output.json', 'w') as f:
             json.dump(final_results, f, indent=4)
         
-        time.sleep(1)  # Wait 1 second before recording again, adjust as necessary
+        # Save to location.json (IDs and their locations)
+        location_data = {
+         
+            'street_lights': {light_id: {'x': loc.x, 'y': loc.y, 'z': loc.z} for light_id, loc in street_light_locations.items()},
+            'buildings': {building_id: {'x': loc.x, 'y': loc.y, 'z': loc.z} for building_id, loc in building_locations.items()}
+        }
+        
+        with open('location.json', 'w') as f:
+            json.dump(location_data, f, indent=4)
+        
+     
 
 def main():
     vehicle_type = 'vehicle.lincoln.mkz_2017'  # Ego vehicle type
