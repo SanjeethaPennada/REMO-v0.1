@@ -73,7 +73,7 @@ def create_combined_gif(gif1_path, gif2_path, output_path):
 # Example usage
 gif1_path = 'failure_scenario.gif'  # Path to the first GIF
 gif2_path = 'modified_scenario.gif'  # Path to the second GIF
-output_path = 'combined_scenario.gif'  # Path to save the output GIF
+output_path = 'output.gif'  # Path to save the output GIF
 
 create_combined_gif(gif1_path, gif2_path, output_path)
 
