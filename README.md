@@ -136,7 +136,7 @@ python3 replay_npcs.py
 This approach allows us to replay the scenario without the ego vehicle (ID=194), ensuring that the NPCs behave deterministically. 
 
 #### Replay with ego vehicle driven by Transfuser
-The `NPC.json` file contains information about adversarial vehicles. The `REMO.py` script runs the ego vehicle, which is controlled by the Transfuser ADS (or any other ADS, as needed). It ensures deterministic behavior of the ego vehicle by loading `NPC.json` into the same environment where the ego vehicle is operating.
+The `NPC.json` file contains information about adversarial vehicles. The `REMO.py` script runs the ego vehicle, which is controlled by the Transfuser ADS (or any other ADS, as needed). It ensures deterministic behavior of the NPCs by loading `NPC.json` into the same environment where the ego vehicle is operating.
 
 To generate the scenario run the following script: 
 ```Shell
