@@ -118,7 +118,7 @@ python3 replay_json.py
 ```
 
 ## REMO (Replay with Modifications)
-Now, we have got test.jsonDet file that contains ego and adevrsarial vehicles information. 
+Now, we have got test.json file that contains ego and adversarial vehicles information. 
 
 #### Replay without ego vehicle 
 We can remove ego vehicle information from test.json, leaving only the adversarial vehicle data. 
