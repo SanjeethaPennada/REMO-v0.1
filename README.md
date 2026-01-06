@@ -10,7 +10,7 @@ This repository contains the code to record and replay a scenario with modificat
 3. [Scenario Generation](#Scenario-Generation)
 4. [Record](#record)
 5. [Replay](#replay)
-6. [REMO (Replay with Modifications)](#REMO (Replay with Modifications))
+6. [REMO (Replay with Modifications)](#REMO- (Replay with Modifications))
 
 ## Prerequisites
 
@@ -28,7 +28,7 @@ This repository contains the code to record and replay a scenario with modificat
 
 Clone the repo
 ```Shell
-git clone https://github.com/SanjeethaPennada/REMO.git
+git clone https://github.com/SanjeethaPennada/REMO-v0.1.git
 cd king
 ```
 
@@ -91,7 +91,7 @@ Once the scenario is generated in CARLA - start and stop recording it using Scen
 
 Close carla server. 
 
-In order to save the failure scenario as gif run [alt text](https://github.com/SanjeethaPennada/REMO-v0.1/blob/main/failure_scenario_gif.py) simultaneously with above code.
+In order to save the failure scenario as gif run ![alt text](https://github.com/SanjeethaPennada/REMO-v0.1/blob/main/failure_scenario_gif.py) simultaneously with above code.
 
 ## Replay
 
@@ -144,7 +144,7 @@ To generate the scenario run the following script:
 ```Shell
 bash run_remo.sh
 ```
-In order to save the modified scenario as gif run [alt text](https://github.com/SanjeethaPennada/REMO-v0.1/blob/main/modified_scenario_gif.py) simultaneously with above code.
+In order to save the modified scenario as gif run ![alt text](https://github.com/SanjeethaPennada/REMO-v0.1/blob/main/modified_scenario_gif.py) simultaneously with above code.
 
 ## Acknowledgements
 This implementation is based on code from several repositories. We sincerely thank the authors for their awesome work.
