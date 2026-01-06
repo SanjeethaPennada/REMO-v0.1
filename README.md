@@ -91,7 +91,11 @@ Once the scenario is generated in CARLA - start and stop recording it using Scen
 
 Close carla server. 
 
-In order to save the failure scenario as gif run ![failure_scenario_gif.py](https://github.com/SanjeethaPennada/REMO-v0.1/blob/main/failure_scenario_gif.py) simultaneously with above code.
+In order to visualise the original failure scenario run the following script in separate shell simultaneously with above script. 
+```Shell
+python3 failure_scenario_gif.py
+```
+This helps to visualise the failure scenario as shown below. 
 ![failure_scenario.gif](https://github.com/SanjeethaPennada/REMO-v0.1/blob/main/failure_scenario.gif)   
 
 ## Replay
@@ -145,10 +149,18 @@ To generate the modified scenario run the following script:
 ```Shell
 bash run_remo.sh
 ```
-In order to save the modified scenario as gif run ![modified_scenario_gif.py](https://github.com/SanjeethaPennada/REMO-v0.1/blob/main/modified_scenario_gif.py) simultaneously with above code. 
-![failure_scenario.gif](https://github.com/SanjeethaPennada/REMO-v0.1/blob/main/failure_scenario.gif)  
+In order to visualise the modified scenario run the following script in separate shell simultaneously with above script. 
+```Shell
+python3 modified_scenario_gif.py
+```
+This helps to visualise the modified scenario as shown below. 
+![modified_scenario.gif](https://github.com/SanjeethaPennada/REMO-v0.1/blob/main/modified_scenario.gif)  
 
-Also, if you want to visualise both original failure scenario and modified scenario together run ![output.py](https://github.com/SanjeethaPennada/REMO-v0.1/blob/main/output.py) and this is saved as shown below. 
+In order to visualise both original failure scenario and modified scenario together run the following script in separate shell
+```Shell
+python3 output.py 
+```
+This helps to visualise both the original failure scenario and modified scenario together as shown below. 
 ![output.gif](https://github.com/SanjeethaPennada/REMO-v0.1/blob/main/output.gif)  
 
 ## Acknowledgements
