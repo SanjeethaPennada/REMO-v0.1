@@ -91,6 +91,8 @@ Once the scenario is generated in CARLA - start and stop recording it using Scen
 
 Close carla server. 
 
+In order to save the failure scenario as gif run [alt text](https://github.com/SanjeethaPennada/REMO-v0.1/blob/main/failure_scenario_gif.py) simultaneously with above code.
+
 ## Replay
 
 Spin up a carla server again in previous shell:
@@ -142,8 +144,7 @@ To generate the scenario run the following script:
 ```Shell
 bash run_remo.sh
 ```
-
-
+In order to save the modified scenario as gif run [alt text](https://github.com/SanjeethaPennada/REMO-v0.1/blob/main/modified_scenario_gif.py) simultaneously with above code.
 
 ## Acknowledgements
 This implementation is based on code from several repositories. We sincerely thank the authors for their awesome work.
