@@ -138,13 +138,13 @@ python3 replay_npcs.py
 This approach allows us to replay the scenario without the ego vehicle (ID=194), ensuring that the NPCs behave deterministically. 
 
 #### Replay with ego vehicle driven by Transfuser
-The `NPC.json` file contains information about adversarial vehicles. The `REMO.py` script runs the ego vehicle, which is controlled by the Transfuser ADS (or any other ADS, as needed). It ensures deterministic behavior of the NPCs by loading `NPC.json` into the same environment where the ego vehicle is operating.
+The `NPC.json` file contains information about adversarial vehicles. The `REMO.py` script runs the ego vehicle, which is controlled by the Transfuser ADS (or any other ADS, as needed). It ensures deterministic behavior of the NPCs by loading `NPC.json` into the same environment where the ego vehicle is operating. The config.py file specifies the set of scenario entities that can be modified. As a result, the modified scenario replays the original scenario while ensuring that all NPCs follow the same trajectories. At the same time, the configuration allows controlled changes such as varying the number of NPCs, altering weather conditions, and modifying environmental entities including street lights and buildings. This design enables systematic evaluation of how an ADS-controlled ego vehicle responds to changes in the environment while preserving the core dynamics of the original scenario.
 
-To generate the scenario run the following script: 
+To generate the modified scenario run the following script: 
 ```Shell
 bash run_remo.sh
 ```
-In order to save the modified scenario as gif run ![modified_scenario_gif.py](https://github.com/SanjeethaPennada/REMO-v0.1/blob/main/modified_scenario_gif.py) simultaneously with above code. Also, if you want to visualise both original failure scenario and modified scenario together run ![output.py](https://github.com/SanjeethaPennada/REMO-v0.1/blob/main/output.py). 
+In order to save the modified scenario as gif run ![modified_scenario_gif.py](https://github.com/SanjeethaPennada/REMO-v0.1/blob/main/modified_scenario_gif.py) simultaneously with above code. Also, if you want to visualise both original failure scenario and modified scenario together run ![output.py](https://github.com/SanjeethaPennada/REMO-v0.1/blob/main/output.py) and this is saved as ![output.gif](https://github.com/SanjeethaPennada/REMO-v0.1/blob/main/output.gif) as shown below. 
 
 ## Acknowledgements
 This implementation is based on code from several repositories. We sincerely thank the authors for their awesome work.
