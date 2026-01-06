@@ -10,7 +10,7 @@ This repository contains the code to record and replay a scenario with modificat
 3. [Scenario Generation](#Scenario-Generation)
 4. [Record](#record)
 5. [Replay](#replay)
-6. [REMO](#REMO (Replay-with-Modifications))
+6. [REMO](#REMO (Replay with Modifications))
 
 ## Prerequisites
 
