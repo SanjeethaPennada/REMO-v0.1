@@ -91,7 +91,7 @@ Once the scenario is generated in CARLA - start and stop recording it using Scen
 
 Close carla server. 
 
-In order to visualise the original failure scenario run the following script in separate shell simultaneously with above script. 
+In order to visualise the original failure scenario run the following script in separate shell simultaneously with above script:
 ```Shell
 python3 failure_scenario_gif.py
 ```
@@ -149,14 +149,14 @@ To generate the modified scenario run the following script:
 ```Shell
 bash run_remo.sh
 ```
-In order to visualise the modified scenario run the following script in separate shell simultaneously with above script. 
+In order to visualise the modified scenario run the following script in separate shell simultaneously with above script: 
 ```Shell
 python3 modified_scenario_gif.py
 ```
 This helps to visualise the modified scenario as shown below. 
 ![modified_scenario.gif](https://github.com/SanjeethaPennada/REMO-v0.1/blob/main/modified_scenario.gif)  
 
-In order to visualise both original failure scenario and modified scenario together run the following script in separate shell
+In order to visualise both original failure scenario and modified scenario together run the following script in separate shell:
 ```Shell
 python3 output.py 
 ```
