@@ -163,6 +163,8 @@ python3 output.py
 This helps to visualise both the original failure scenario and modified scenario together as shown below. 
 ![output.gif](https://github.com/SanjeethaPennada/REMO-v0.1/blob/main/output.gif)  
 
+## Funding
+This research was funded by the Engineering and Physical Sciences Research Council (EPSRC) through UK Research and Innovation (Project Reference: EP/Y014219/1)
 ## Acknowledgements
 This implementation is based on code from several repositories. We sincerely thank the authors for their awesome work.
 - [CARLA Leaderboard](https://github.com/carla-simulator/leaderboard)
